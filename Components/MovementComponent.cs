@@ -18,8 +18,6 @@ public class MovementComponent : Component
     // Movement and speed2
     int speed = 2;
     Vector2Int movement = new();
-    int gravity;
-    public bool rightSideUp = true;
 
     // The widht of the parent sprite
     int spriteWidth, spriteHeight;
@@ -42,64 +40,26 @@ public class MovementComponent : Component
 
     public override void Update(GameTime gameTime)
     {
-        /*if ((bool)parent.GetAttributeVariable("AnimationAttribute", "setParentDimensions") && !setDimensions)
-        {
-            spriteWidth = parent.width;
-            spriteHeight = parent.height;
-
-            setDimensions = true;
-        }*/
-
         // Set step counts
         xStep = spriteWidth * parent.sizeMultiplier.x + (12 - 1);
         yStep = spriteHeight * parent.sizeMultiplier.y + (12 - 1);
 
         // MoveX
-        // Add these to the next to if statements if you decide to put animation back on:  && (bool)parent.GetAttributeVariable("AnimationAttribute", "setParentDimensions")
         if (Keyboard.GetState().IsKeyDown(Keys.A))
         {
             movement.x += -speed;
-
-            // Run the animation
-            /*parent.SetAttributeVariable("AnimationAttribute", "currentAnimation", 0);
-            parent.SetAttributeVariable("AnimationAttribute", "playing", true);
-            parent.SetAttributeVariable("AnimationAttribute", "looping", true);*/
         } else if (Keyboard.GetState().IsKeyDown(Keys.D))
         {
             movement.x += speed;
-
-            // Run the animation
-            /*parent.SetAttributeVariable("AnimationAttribute", "currentAnimation", 0);
-            parent.SetAttributeVariable("AnimationAttribute", "playing", true);
-            parent.SetAttributeVariable("AnimationAttribute", "looping", true);*/
-        } else
-        {
-            /*parent.SetAttributeVariable("AnimationAttribute", "playing", false);
-            parent.CallAttributeMethod("AnimationAttribute", "SetToDefault");*/
         }
 
         // MoveY
-        // Add these to the next to if statements if you decide to put animation back on:  && (bool)parent.GetAttributeVariable("AnimationAttribute", "setParentDimensions")
         if (Keyboard.GetState().IsKeyDown(Keys.W))
         {
             movement.y += -speed;
-
-            // Run the animation
-            /*parent.SetAttributeVariable("AnimationAttribute", "currentAnimation", 0);
-            parent.SetAttributeVariable("AnimationAttribute", "playing", true);
-            parent.SetAttributeVariable("AnimationAttribute", "looping", true);*/
         } else if (Keyboard.GetState().IsKeyDown(Keys.S))
         {
             movement.y += speed;
-
-            // Run the animation
-            /*parent.SetAttributeVariable("AnimationAttribute", "currentAnimation", 0);
-            parent.SetAttributeVariable("AnimationAttribute", "playing", true);
-            parent.SetAttributeVariable("AnimationAttribute", "looping", true);*/
-        } else
-        {
-            /*parent.SetAttributeVariable("AnimationAttribute", "playing", false);
-            parent.CallAttributeMethod("AnimationAttribute", "SetToDefault");*/
         }
 
         // Final movements
@@ -179,17 +139,5 @@ public class MovementComponent : Component
                 break;
             }
         }
-    }
-
-    public void SetToRightSideUp()
-    {
-            gravity = GRAVITY;
-            rightSideUp = true;
-    }
-
-    public void SetToWrongSideUp()
-    {
-        gravity = -GRAVITY;
-        rightSideUp = false;
     }
 }

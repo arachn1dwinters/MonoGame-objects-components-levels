@@ -29,8 +29,6 @@ public class Level
 	public virtual void Update(){ }
 	public virtual void Initialize() { }
 
-	public virtual void playerRespawn() { }
-
 	public void Remove()
 	{
 		parent.levels.Remove(this);
